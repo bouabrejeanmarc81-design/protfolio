@@ -19,14 +19,24 @@ contactLinks.forEach((link) => {
 	link.addEventListener('click', () => highlightTitle(contactTitle));
 });
 
-contactForm.addEventListener('submit', (event) => {
+contactForm.addEventListener('submit', async (event) => {
 	event.preventDefault();
+	formStatus.textContent = 'Envoi en cours...';
 
-	const formData = new FormData(contactForm);
-	const subject = `Message de ${formData.get('name')}`;
-	const body = `Nom : ${formData.get('name')}\nE-mail : ${formData.get('email')}\n\n${formData.get('message')}`;
-	const mailto = `mailto:bouabrejeanmarc81@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+	try {
+		const response = await fetch(contactForm.action, {
+			method: 'POST',
+			body: new FormData(contactForm),
+			headers: { 'Accept': 'application/json' }
+		});
 
-	window.location.href = mailto;
-	formStatus.textContent = 'Votre logiciel de messagerie va s’ouvrir.';
+		if (response.ok) {
+			formStatus.textContent = 'Merci ! Votre message a bien été envoyé.';
+			contactForm.reset();
+		} else {
+			formStatus.textContent = 'Erreur, veuillez réessayer.';
+		}
+	} catch (error) {
+		formStatus.textContent = 'Erreur de connexion, veuillez réessayer.';
+	}
 });
