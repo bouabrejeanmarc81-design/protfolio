@@ -577,7 +577,7 @@ li a:hover{
 	border-radius: 999px;
 	padding: 0.5rem 1rem;
 	background: #f97316;
-	color: white;
+	color: white; 
 	font: inherit;
 	font-weight: bold;
 	cursor: pointer;
