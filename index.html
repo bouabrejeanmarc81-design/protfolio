@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,29 +7,37 @@
     <link rel="stylesheet" href="index.css">
     <script src="index.js" defer></script>
 </head>
-<body>
+<body id="top">
     <nav class="navbar">
         <div class="navdiv">
-            <div class="logo"><a href="">JM.DEV</a></div>
+            <div class="logo"><a href="#top">JM.DEV</a></div>
             <ul class="nav-links">
-                <li><a href="">Acceuil</a></li>
-                <li><a href="#competences">Competences</a></li>
-                <li><a href="#projets">Mes Projects</a></li>
+                <li><a href="#top">Accueil</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#projets">Mes Projets</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
-    <div class="profile-photo">
-        <img src="photo/photo1.jpeg" alt="Photo de profil">
-    </div>
-        <div class="divdispo">Disponible pour de nouveau projets</div>
-        <p class="p1">Je transforme vos idées en<span class="orange">  expérience  </span> digitale</p>
-        <div class="actions">
-            <button class="btn1" type="button"><a href="">Voir mes projets</a></button>
-            <button class="btn2" type="button"><a href="#contact">Me contacter</a></button>
-        </div>
-        <p class="p2" id="competences">MA BOITE A OUTILS</p>
-        <div class="tools"> 
+
+    <main>
+        <!-- Hero : le texte et la photo sont dans la même grille, donc la photo ne peut plus passer sur le texte -->
+        <section class="hero">
+            <div class="hero-text">
+                <div class="divdispo">Disponible pour de nouveaux projets</div>
+                <h1 class="p1">Je transforme vos idées en <span class="orange">expérience</span> digitale</h1>
+                <div class="actions">
+                    <a class="btn1" href="#projets">Voir mes projets</a>
+                    <a class="btn2" href="#contact">Me contacter</a>
+                </div>
+            </div>
+            <div class="profile-photo">
+                <img src="photo/photo1.jpeg" alt="Photo de profil">
+            </div>
+        </section>
+
+        <h2 class="p2" id="competences">MA BOITE À OUTILS</h2>
+        <div class="tools">
             <div class="tool-group frontend-group">
                 <h3 class="tool-title">FRONTEND</h3>
                 <div class="frontend">
@@ -58,42 +66,45 @@
                 </div>
             </div>
         </div>
+
         <div class="mes-projets" id="projets">
-            <p class="p2 p3">MES PROJETS</p>
+            <h2 class="p2 p3">MES PROJETS</h2>
             <div class="projects">
                 <div class="project">
                     <img src="photo/projet1.png" alt="Projet 1">
-                    <h4>Projet 1</h4>
+                    <h3>Projet 1</h3>
                     <p>Description du projet 1.</p>
                 </div>
                 <div class="project">
                     <img src="photo/projet2.png" alt="Projet 2">
-                    <h4>Projet 2</h4>
+                    <h3>Projet 2</h3>
                     <p>Description du projet 2.</p>
                 </div>
                 <!-- Ajoutez d'autres projets ici -->
             </div>
         </div>
-        <form class="contact" id="contact" action="https://formspree.io/f/xrppwpre" methode="POST">
-            <p class="p2 p4">CONTACT</p>
-            <p class="contact-intro">Une idée de projet ? Enssemble donnons vie a cette idée.</p>
-            <form class="contact-form" id="contact-form">
+
+        <!-- Un seul formulaire (avant, il y en avait deux imbriqués, ce qui est interdit en HTML) -->
+        <section class="contact" id="contact">
+            <h2 class="p2 p4">CONTACT</h2>
+            <p class="contact-intro">Une idée de projet ? Ensemble, donnons vie à cette idée.</p>
+            <form class="contact-form" id="contact-form" action="https://formspree.io/f/xrppwpre" method="POST">
                 <div class="form-field">
-                    <label for="name" required>Nom</label>
+                    <label for="name">Nom</label>
                     <input id="name" name="name" type="text" autocomplete="name" required>
                 </div>
                 <div class="form-field">
-                    <label for="email" required>Adresse e-mail</label>
+                    <label for="email">Adresse e-mail</label>
                     <input id="email" name="email" type="email" autocomplete="email" required>
                 </div>
                 <div class="form-field form-field-full">
-                    <label for="message" required>Message</label>
+                    <label for="message">Message</label>
                     <textarea id="message" name="message" rows="6" required></textarea>
                 </div>
                 <button class="contact-submit" type="submit">Envoyer le message</button>
                 <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
             </form>
-        </form>
-    </div>
+        </section>
+    </main>
 </body>
 </html>
